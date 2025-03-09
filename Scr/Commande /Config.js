@@ -1,65 +1,28 @@
+require("dotenv").config(); // Charge les variables d'environnement
+
 const config = {
-    // 📌 Informations principales
-    botName: "Murphy-MD",
-    ownerName: "Murphy FF",
-    ownerNumber: "+242057954499",
+    botName: process.env.BOT_NAME,
+    ownerName: process.env.OWNER_NAME,
+    ownerNumber: process.env.OWNER_NUMBER,
 
-    // ⚙️ Paramètres généraux
-    prefix: "!", // Préfixe du bot
-    sessionName: "murphy-md-session",
-    language: "fr", // Langue du bot (fr/en/...)
+    prefix: process.env.PREFIX,
+    sessionName: process.env.SESSION_NAME,
+    language: process.env.LANGUAGE,
 
-    // 🌐 Liens & Médias
-    logoUrl: "https://TON-LIEN-DU-LOGO.jpg", // Mets ici l’URL du logo
-    botDescription: "🤖 Murphy-MD | Bot WhatsApp puissant et intelligent.",
-    welcomeMessage: "👋 Bienvenue sur *Murphy-MD*! Tape `!menu` pour voir les commandes.",
+    logoUrl: process.env.LOGO_URL,
+    botDescription: process.env.BOT_DESCRIPTION,
+    welcomeMessage: process.env.WELCOME_MESSAGE,
 
-    // 🚀 Système de permissions & rôles
-    roles: {
-        superAdmins: ["+242057954499"], // Super Admins
-        admins: [], // Ajoute d’autres admins ici
-        users: [], // Liste des utilisateurs normaux (facultatif)
-    },
-
-    // 🎭 Commandes réservées aux admins
-    adminCommands: ["kick", "promote", "demote", "mute", "unmute", "ban", "warn"],
-
-    // ⚠️ Sécurité & Modération
     security: {
-        autoBan: true, // Ban automatique après plusieurs avertissements
-        antiSpam: true, // Bloque les messages répétés
-        antiLink: true, // Supprime les liens interdits
-        maxWarnings: 3, // Nombre d’avertissements avant ban
+        autoBan: process.env.AUTO_BAN === "true",
+        antiSpam: process.env.ANTI_SPAM === "true",
+        antiLink: process.env.ANTI_LINK === "true",
+        maxWarnings: parseInt(process.env.MAX_WARNINGS),
     },
 
-    // 🛠 Paramètres avancés
     advanced: {
-        autoRestart: true, // Redémarrage automatique en cas de crash
-        debugMode: false, // Mode debug
-    },
-
-    // 📂 Gestion des fichiers et logs
-    paths: {
-        logs: "./logs/murphy-md.log",
-        media: "./media",
-        temp: "./temp",
-    },
-
-    // 📡 Système de réponse automatique
-    autoReply: {
-        enable: true,
-        messages: {
-            hi: "👋 Salut ! Comment puis-je t'aider ?",
-            bye: "👋 À bientôt !",
-            thanks: "😊 Avec plaisir !",
-        },
-    },
-
-    // 💰 Système d'économie (facultatif)
-    economy: {
-        enable: true,
-        startingBalance: 500,
-        dailyBonus: 100,
+        autoRestart: process.env.AUTO_RESTART === "true",
+        debugMode: process.env.DEBUG_MODE === "true",
     },
 };
 
