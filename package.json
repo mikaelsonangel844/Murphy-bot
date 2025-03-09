@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
+     "zokou": "node index.js"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.0.0",
