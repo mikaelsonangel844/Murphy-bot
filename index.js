@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const { default: makeWASocket, useMultiFileAuthState } = require("@whiskeysockets/baileys");
+const { exec } = require('child_process');
 
 // 📥 URL du fichier session stocké sur GitHub
 const SESSION_URL = 'https://raw.githubusercontent.com/mikaelsonangel844/Murphy-md-session/main/auth_info/creds.json';
@@ -33,20 +34,23 @@ async function downloadSession() {
 
 // 🚀 Connexion à WhatsApp
 async function connectToWhatsApp() {
-    const { state, saveCreds } = await useMultiFileAuthState(SESSION_DIR); // 📂 Stockage des sessions
+    const { state, saveCreds } = await useMultiFileAuthState(SESSION_DIR);
 
     const sock = makeWASocket({
         auth: state,
         printQRInTerminal: true, // 📸 Affichage du QR Code pour connexion
     });
 
+    // 🔄 Mise à jour et sauvegarde de la session
     sock.ev.on("creds.update", async () => {
         console.log("🔄 Mise à jour de la session...");
         await saveCreds();
 
         fs.writeFileSync(SESSION_FILE, JSON.stringify(state, null, 2));
-        require('child_process').exec(`
-            cd auth_info &&
+        
+        // 🔼 Upload automatique sur GitHub
+        exec(`
+            cd ${SESSION_DIR} &&
             git add creds.json &&
             git commit -m "Mise à jour de la session" &&
             git push origin main
@@ -57,6 +61,7 @@ async function connectToWhatsApp() {
         });
     });
 
+    // 🔄 Gestion des connexions
     sock.ev.on("connection.update", (update) => {
         const { connection } = update;
         if (connection === "close") {
@@ -67,6 +72,7 @@ async function connectToWhatsApp() {
         }
     });
 
+    // 📩 Gestion des messages
     sock.ev.on("messages.upsert", async (m) => {
         const msg = m.messages[0];
         if (!msg.message) return;
