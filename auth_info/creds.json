@@ -1,1 +1,18 @@
+const fs = require('fs');
+const path = require('path');
 
+const authPath = path.join(__dirname, 'auth_info', 'creds.json');
+
+function saveSession(session) {
+    fs.writeFileSync(authPath, JSON.stringify(session, null, 2));
+    console.log("✅ Session sauvegardée !");
+}
+
+// Exemple d'utilisation après connexion du bot
+client.on('connection.update', async (update) => {
+    const { connection, lastDisconnect } = update;
+    if (connection === 'open') {
+        const session = client.authState.creds;
+        saveSession(session);
+    }
+});
