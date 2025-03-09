@@ -18,22 +18,21 @@ for (const file of commandFiles) {
     console.log(`Commande chargée : ${file}`);
 }
 
-// Démarrage du bot (ajoute ton code ici)
-const fs = require('fs');
-const path = require('path');
-
-// Créer un flux d'écriture vers logs.txt
+// Création d'un flux d'écriture vers logs.txt
 const logStream = fs.createWriteStream(path.join(__dirname, 'logs.txt'), { flags: 'a' });
 
-// Rediriger la console vers logs.txt
+// Redirection de la console vers logs.txt
+const originalConsoleLog = console.log;
+const originalConsoleError = console.error;
+
 console.log = (...args) => {
     const message = args.map(arg => (typeof arg === 'object' ? JSON.stringify(arg) : arg)).join(' ');
     logStream.write(`[${new Date().toISOString()}] ${message}\n`);
-    process.stdout.write(`[${new Date().toISOString()}] ${message}\n`);
+    originalConsoleLog(`[${new Date().toISOString()}] ${message}`);
 };
 
 console.error = (...args) => {
     const message = args.map(arg => (typeof arg === 'object' ? JSON.stringify(arg) : arg)).join(' ');
     logStream.write(`[${new Date().toISOString()}] [ERROR] ${message}\n`);
-    process.stderr.write(`[${new Date().toISOString()}] [ERROR] ${message}\n`);
+    originalConsoleError(`[${new Date().toISOString()}] [ERROR] ${message}`);
 };
