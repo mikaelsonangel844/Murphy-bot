@@ -66,6 +66,5 @@ if (!fs.existsSync(commandsPath)) {
 
 const result = fs.readdirSync(commandsPath);
 console.log("Commandes chargées :", result);
-
 // 🚀 Lancement du bot
 startBot().catch(console.error);
