@@ -1,12 +1,12 @@
 {
   "name": "murphy-md",
   "version": "1.0.0",
-  "description": "🤖 Murphy-MD | Bot WhatsApp puissant et intelligent.",
+  "description": "Murphy-MD | Bot WhatsApp puissant et intelligent.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
-     "zokou": "node index.js"
+    "dev": "nodemon index.js",
+    "zokou": "node index.js"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.0.0",
