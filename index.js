@@ -56,6 +56,16 @@ async function startBot() {
         }
     });
 }
+const fs = require("fs");
+
+const commandsPath = "./commands";
+if (!fs.existsSync(commandsPath)) {
+    console.log("Le dossier 'commands' est manquant. Création en cours...");
+    fs.mkdirSync(commandsPath);
+}
+
+const result = fs.readdirSync(commandsPath);
+console.log("Commandes chargées :", result);
 
 // 🚀 Lancement du bot
 startBot().catch(console.error);
