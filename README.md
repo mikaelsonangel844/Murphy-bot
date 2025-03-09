@@ -4,6 +4,10 @@
 
 Murphy-MD est un bot WhatsApp puissant basé sur Baileys.
 
+## Obtenir murphy 🛠️
+
+1. Cliquez sur **[Fork](https://github.com/mikaelsonangel844/Murphy-md-session-/fork)** afin de copier le repo sur votre compte GitHub. N'oubliez pas d'ajouter une étoile 🌟 pour encourager les développeurs !
+2. 
 ## 📌 Obtenir une session
 
 Pour obtenir une session, rendez-vous sur [Murphy-MD Session](https://murphy-md.onrender.com).
