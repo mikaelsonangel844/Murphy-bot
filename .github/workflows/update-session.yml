@@ -1,0 +1,37 @@
+name: Update Murphy-MD Session
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 */6 * * *'  # Mise à jour automatique toutes les 6 heures
+
+jobs:
+  update-session:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v18
+        with:
+          node-version: 18
+
+      - name: Run bot to update session
+        run: |
+          npm install
+          node index.js
+        env:
+          SESSION_PATH: auth_info/creds.json
+
+      - name: Commit and push session update
+        run: |
+          git config --global user.name "Murphy Bot"
+          git config --global user.email "murphy-bot@example.com"
+          git add auth_info/creds.json
+          git commit -m "🔄 Mise à jour automatique de la session"
+          git push
+        continue-on-error: true
