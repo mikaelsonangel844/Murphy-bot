@@ -1,6 +1,29 @@
 # 🤖 Murphy-MD - Bot WhatsApp
 
-Murphy-MD est un bot WhatsApp puissant basé sur **Baileys** (Node.js). Il prend en charge un système avancé de gestion des commandes, une base de données et une intelligence artificielle pour répondre aux messages. Idéal pour la modération, l'automatisation et le divertissement.
+# Murphy-MD
+
+Murphy-MD est un bot WhatsApp puissant basé sur Baileys.
+
+## 📌 Obtenir une session
+
+Pour obtenir une session, rendez-vous sur [Murphy-MD Session](https://murphy-md.onrender.com).
+
+## 🚀 Fonctionnalités
+
+- Réponse automatisée aux messages  
+- Système de modération (antispam, anti-lien, auto-ban)  
+- Téléchargement de vidéos, images et GIFs  
+- Intégration de l'IA (ChatGPT)  
+- Commandes personnalisées et gestion des rôles  
+
+## 📜 Installation
+
+Clonez le projet et installez les dépendances :
+
+```sh
+git clone https://github.com/mikaelsonangel844/Murphy-bot.git
+cd Murphy-bot
+npm install
 
 ## ✨ Fonctionnalités
 - 📌 **Système de commandes** (Admin, Modérateur, Utilisateur)
@@ -11,12 +34,6 @@ Murphy-MD est un bot WhatsApp puissant basé sur **Baileys** (Node.js). Il prend
 - 👋 **Message d'accueil automatique**
 - 📊 **Interaction avec une base de données**
 
-## 📦 Installation
-
-### Prérequis
-- [Node.js](https://nodejs.org/) (v16+ recommandé)
-- [Git](https://git-scm.com/)
-- Un numéro WhatsApp (pour l'authentification)
 
 ### DÉVELOPPEURS 
-ᴍᴜʀᴘʜʏ᭄ғғ⚠️
+Murphy off
